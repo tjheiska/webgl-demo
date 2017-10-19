@@ -1,0 +1,28 @@
+<div class="modal fade" id="nativeModal" data-backdrop="static" data-keyboard="false">
+	<div class="modal-dialog h-100 d-flex flex-column justify-content-center my-0" role="document">
+    	<div class="modal-content">
+      		<div class="modal-body">
+      			<div class="container">
+      				<div class="row">
+      					<div class="col-2">
+      						<div id="spinner-container">
+      							<div id="spinner">
+		        					<p><i class="fa fa-spinner fa-4x gradient-icon fa-pulse" aria-hidden="true"></i></p>
+		        				</div>
+		        				<div id="spinner-shadow">
+		        					<p><i class="fa fa-spinner fa-pulse fa-4x" aria-hidden="true"></i></p>
+		        				</div>
+		        			</div>
+		        		</div>
+		        		<div class="col-10">
+	         				<ul style="list-style-type: none">
+	         					<li *ngFor="let task of history">{{task}}<span style="color:green">done!</span></li>
+    	        				<li *ngFor="let task of tasks">{{task}}</li>
+ 	         				</ul>
+ 	         			</div>
+          			</div>
+        		</div>
+      		</div>
+    	</div>
+ 	</div>
+</div>

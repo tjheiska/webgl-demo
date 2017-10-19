@@ -1,0 +1,46 @@
+<loader-modal #loaderModal></loader-modal>
+<div class="container-fluid">
+  <!--< webgl-demo-canvas #mainCanvas rendererId="'textureDataRenderer'" >
+  </webgl-demo-canvas> -->
+  <div class="row justify-content-center">
+    <canvas #mainCanvas webGLRendered [webGLRendererId]="'defaultRenderer'"></canvas>
+  </div>
+  <div #collapseRow class="row">
+    <div class="col-sm-2">
+      <p>
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseInfo" 
+        (attr.aria-expanded)="collapseExpanded" aria-controls="collapseInfo" 
+        (click)="onClickCollapse($event)" >
+          <i [class]="icon" ></i>Info
+        </a>
+      </p>
+    </div>
+    <div class="col-sm-10"></div>
+  </div>
+  <div class="collapse" id="collapseInfo">
+
+    <!-- Navigation tabs -->
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li *ngFor="let tabContent of tabContents | slice:0:1" class="nav-item">
+        <a class="nav-link active" [attr.id]="tabContent.tabId" data-toggle="tab" [attr.href]="tabContent.href" role="tab" [attr.aria-controls]="tabContent.ariaControls" aria-expanded="true">{{tabContent.label}}</a>
+      </li>
+      <li *ngFor="let tabContent of tabContents | slice:1" class="nav-item">
+        <a class="nav-link" [attr.id]="tabContent.tabId" data-toggle="tab" [attr.href]="tabContent.href" role="tab" [attr.aria-controls]="tabContent.ariaControls">{{tabContent.label}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="debug-image-tab" data-toggle="tab" href="#debug-image" role="tab" aria-controls="debug-image">Debug image</a>
+      </li>
+
+    </ul>
+
+    <br>
+        
+    <div class="tab-content" id="myTabContent">
+      <div *ngFor="let tabContent of tabContents | slice:0:1" class="tab-pane fade  show active" [attr.id]="tabContent.id" role="tabpanel" [attr.aria-labelledby]="tabContent.ariaLabelledBy"><div class="col-12" [innerHTML]="tabContent.html"></div></div>
+
+      <div *ngFor="let tabContent of tabContents | slice:1" class="tab-pane fade" [attr.id]="tabContent.id" role="tabpanel" [attr.aria-labelledby]="tabContent.ariaLabelledBy"><div class="col-12" [innerHTML]="tabContent.html"></div></div>
+
+      <div class="tab-pane fade" id="debug-image" role="tabpanel" aria-labelledby="debug-image-tab"><div class="col-12"><canvas #dataPngCanvas></canvas></div></div>
+    </div>
+  </div>
+</div>
